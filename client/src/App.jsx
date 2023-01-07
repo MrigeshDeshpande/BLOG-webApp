@@ -36,3 +36,4 @@ function App() {
 }
 
 export default App;
+//client folder contains rect-app -> front-end part of the application
