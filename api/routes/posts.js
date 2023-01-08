@@ -2,7 +2,7 @@ const router = require("express").Router();
 const User = require("../models/User");
 const Post = require("../models/Post");
 
-//CREATE NEW-POST
+//CREATE POST
 router.post("/", async (req, res) => {
   const newPost = new Post(req.body);
   try {
@@ -31,7 +31,7 @@ router.put("/:id", async (req, res) => {
         res.status(500).json(err);
       }
     } else {
-      res.status(401).json("OOPS!! Look's like this isn't your post ");
+      res.status(401).json("You can update only your post!");
     }
   } catch (err) {
     res.status(500).json(err);
@@ -66,7 +66,6 @@ router.get("/:id", async (req, res) => {
     res.status(500).json(err);
   }
 });
-
 
 //GET ALL POSTS
 router.get("/", async (req, res) => {

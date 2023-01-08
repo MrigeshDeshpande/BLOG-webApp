@@ -7,7 +7,6 @@ const bcrypt = require("bcrypt");
 router.put("/:id", async (req, res) => {
   if (req.body.userId === req.params.id) {
     if (req.body.password) {
-      //hashing again
       const salt = await bcrypt.genSalt(10);
       req.body.password = await bcrypt.hash(req.body.password, salt);
     }
@@ -17,7 +16,7 @@ router.put("/:id", async (req, res) => {
         {
           $set: req.body,
         },
-        { new: true }//will send updated one 
+        { new: true }
       );
       res.status(200).json(updatedUser);
     } catch (err) {
@@ -47,7 +46,6 @@ router.delete("/:id", async (req, res) => {
     res.status(401).json("You can delete only your account!");
   }
 });
-
 
 //GET USER
 router.get("/:id", async (req, res) => {
